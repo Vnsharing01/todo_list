@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +12,7 @@ part 'sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final logger = Logger();
+  final dio = Dio();
   SignUpBloc()
       : super(const SignUpState(
           email: '',
@@ -47,7 +50,23 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     });
 
     on<RegisterEvent>((event, emit) async {
-      
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: event.email, password: event.password);
+        if (userCredential.user != null) {
+          if (!event.context.mounted) return;
+          await Navigator.pushReplacementNamed(event.context, Routes.LOGIN);
+        }
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          logger.d('The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          logger.d('The account already exists for that email.');
+        }
+      } catch (e) {
+        logger.e(e);
+      }
     });
   }
 }

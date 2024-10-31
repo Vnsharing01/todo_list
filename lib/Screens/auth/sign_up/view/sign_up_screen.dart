@@ -39,6 +39,15 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   CustomeTextFieldView(
+                    hintText: 'Name',
+                    text: state.name,
+                    prefixIcon: const Icon(Icons.email_rounded),
+                    onChanged: (text) {
+                      bloc.add(ChangedNameEvent(text: text));
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  CustomeTextFieldView(
                     hintText: 'Password',
                     text: state.password,
                     obscureText: !state.isShowPassword,
@@ -59,28 +68,11 @@ class SignUpScreen extends StatelessWidget {
                     onTap: () async {
                       bloc.add(CheckTextFieldEvent());
                       if (state.email.isNotEmpty && state.password.isNotEmpty) {
-                        // bloc.add(RegisterEvent(
-                        //   context,
-                        //   email: state.email,
-                        //   password: state.password,
-                        // ));
-
-                        try {
-                          await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                                  email: state.email, password: state.password);
-                        } on FirebaseAuthException catch (e) {
-                          if (e.code == 'weak-password') {
-                            logger.d('The password provided is too weak.');
-                          } else if (e.code == 'email-already-in-use') {
-                            logger.d(
-                                'The account already exists for that email.');
-                          }
-                        } catch (e) {
-                          logger.e(e);
-                        }
-                        // await Navigator.pushReplacementNamed(
-                        //     context, Routes.LOGIN);
+                        bloc.add(RegisterEvent(
+                          context,
+                          email: state.email,
+                          password: state.password,
+                        ));
                       }
                     },
                   ),

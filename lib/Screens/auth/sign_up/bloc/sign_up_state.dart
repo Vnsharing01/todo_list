@@ -1,7 +1,7 @@
 part of 'sign_up_bloc.dart';
 
 @immutable
-class SignUpState {
+class SignUpState extends Equatable {
   final bool isShowPassword;
   final String email;
   final String password;
@@ -35,12 +35,15 @@ class SignUpState {
       passwordError: passwordError ?? this.passwordError,
     );
   }
-}
 
-final class SignUpInitial extends SignUpState {
-  SignUpInitial(
-      {required super.isShowPassword,
-      required super.email,
-      required super.name,
-      required super.password});
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        isShowPassword,
+        email,
+        name,
+        password,
+        emailError,
+        passwordError,
+      ];
 }

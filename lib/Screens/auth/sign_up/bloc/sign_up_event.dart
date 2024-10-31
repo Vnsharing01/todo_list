@@ -8,6 +8,11 @@ class ChangedEmailEvent extends SignUpEvent {
 
   ChangedEmailEvent({required this.text});
 }
+class ChangedNameEvent extends SignUpEvent {
+  final String text;
+
+  ChangedNameEvent({required this.text});
+}
 
 class ChangedPasswordEvent extends SignUpEvent {
   final String text;
