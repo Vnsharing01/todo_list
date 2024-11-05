@@ -18,3 +18,8 @@ class ChangedPasswordEvent extends LoginEvent {
 class ShowPasswordEvent extends LoginEvent {}
 
 class CheckTextFieldEvent extends LoginEvent {}
+class SignInEvent extends LoginEvent {
+  final BuildContext context;
+
+  SignInEvent(this.context);
+}

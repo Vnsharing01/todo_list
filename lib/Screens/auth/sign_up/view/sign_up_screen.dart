@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
@@ -6,7 +5,6 @@ import 'package:logger/logger.dart';
 import '../../../../custom_view/button_text_view.dart';
 import '../../../../custom_view/custome_text_field_view.dart';
 import '../../../../custom_view/defaul_app_bar.dart';
-import '../../../../routes/routes.dart';
 import '../bloc/sign_up_bloc.dart';
 
 class SignUpScreen extends StatelessWidget {

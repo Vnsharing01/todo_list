@@ -75,9 +75,9 @@ class LoginScreen extends StatelessWidget {
                     btnName: 'Login',
                     background: Colors.red,
                     onTap: () {
-                      context.read<LoginBloc>().add(CheckTextFieldEvent());
+                      bloc.add(CheckTextFieldEvent());
                       if (state.email.isNotEmpty && state.password.isNotEmpty) {
-                        Navigator.pushReplacementNamed(context, Routes.HOME);
+                        bloc.add(SignInEvent(context));
                       }
                     },
                   ),

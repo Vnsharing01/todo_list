@@ -60,9 +60,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          logger.d('The password provided is too weak.');
+          logger.w('The password provided is too weak.');
         } else if (e.code == 'email-already-in-use') {
-          logger.d('The account already exists for that email.');
+          logger.w('The account already exists for that email.');
         }
       } catch (e) {
         logger.e(e);
