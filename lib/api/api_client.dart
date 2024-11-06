@@ -4,7 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 class ApiClient {
   late final Dio dio;
 
-  ApiClient(this.dio) {
+  ApiClient() {
     dio = Dio(BaseOptions(
       baseUrl: 'https://dummyjson.com',
       connectTimeout: const Duration(seconds: 10),

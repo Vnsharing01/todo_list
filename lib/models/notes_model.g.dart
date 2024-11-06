@@ -109,3 +109,26 @@ extension $NotesModelCopyWith on NotesModel {
   // ignore: library_private_types_in_public_api
   _$NotesModelCWProxy get copyWith => _$NotesModelCWProxyImpl(this);
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+NotesModel _$NotesModelFromJson(Map<String, dynamic> json) => NotesModel(
+      id: json['id'] as String?,
+      subtitle: json['subtitle'] as String?,
+      time: json['time'] as String?,
+      image: (json['image'] as num?)?.toInt(),
+      title: json['title'] as String?,
+      isDon: json['isDon'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$NotesModelToJson(NotesModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'subtitle': instance.subtitle,
+      'title': instance.title,
+      'time': instance.time,
+      'image': instance.image,
+      'isDon': instance.isDon,
+    };

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
+import 'package:todo_list/Screens/auth/sign_up/repository/sign_up_repository.dart';
+import 'package:todo_list/api/api_client.dart';
 
 import '../../../../routes/routes.dart';
 
@@ -11,10 +13,14 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final logger = Logger();
-  final dio = Dio();
+  final logger;
+  final dio;
+  late final signUpRepository;
   LoginBloc()
-      : super(const LoginState(
+      : logger = Logger(),
+        dio = Dio(),
+        signUpRepository = ImpSignUpRepository,
+        super(const LoginState(
           email: '',
           password: '',
           isShowPassword: false,
