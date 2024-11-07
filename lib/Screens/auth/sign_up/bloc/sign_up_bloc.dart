@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
+import '../../../../api/api_client.dart';
 import '../../../../routes/routes.dart';
+import '../repository/sign_up_repository.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';
@@ -13,6 +15,7 @@ part 'sign_up_state.dart';
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final logger = Logger();
   final dio = Dio();
+  final signUpRepository = SignUpRepository(ApiClient());
   SignUpBloc()
       : super(const SignUpState(
           email: '',
@@ -51,6 +54,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
     on<RegisterEvent>((event, emit) async {
       try {
+        final res = await signUpRepository.register(
+            state.email, state.name, state.password);
+        logger.f("res: $res");
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: event.email, password: event.password);
@@ -64,7 +70,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         } else if (e.code == 'email-already-in-use') {
           logger.w('The account already exists for that email.');
         }
-      } catch (e) {
+      }on DioException  catch (ex) {
+      if(ex.type == DioExceptionType.connectionTimeout){
+        throw Exception("Connection  Timeout Exception");
+      }
+      throw Exception(ex.message);
+    } catch (e) {
         logger.e(e);
       }
     });

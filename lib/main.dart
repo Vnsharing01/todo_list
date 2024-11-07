@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'Screens/auth/login/bloc/login_bloc.dart';
 import 'Screens/auth/sign_up/bloc/sign_up_bloc.dart';
@@ -46,6 +47,7 @@ class TodoApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRoute.onPageRoute,
         initialRoute: Routes.LOGIN,
+        builder: EasyLoading.init(),
       ),
     );
   }

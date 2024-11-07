@@ -15,7 +15,7 @@ class SignUpRepository implements ImpSignUpRepository {
   @override
   Future register(String mail, String name, String password) async {
     final res = await _apiClient.post(
-      ApiEndpoint.REGISTER,
+      ApiEndpoint.ADD_USER ,
       data: UserModel(name: name, mail: mail, passwword: password).toJson(),
     );
     return res.data;
