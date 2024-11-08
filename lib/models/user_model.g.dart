@@ -11,9 +11,9 @@ abstract class _$UserModelCWProxy {
 
   UserModel name(String? name);
 
-  UserModel mail(String? mail);
+  UserModel email(String? email);
 
-  UserModel passwword(String? passwword);
+  UserModel password(String? password);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -24,8 +24,8 @@ abstract class _$UserModelCWProxy {
   UserModel call({
     String? id,
     String? name,
-    String? mail,
-    String? passwword,
+    String? email,
+    String? password,
   });
 }
 
@@ -42,10 +42,10 @@ class _$UserModelCWProxyImpl implements _$UserModelCWProxy {
   UserModel name(String? name) => this(name: name);
 
   @override
-  UserModel mail(String? mail) => this(mail: mail);
+  UserModel email(String? email) => this(email: email);
 
   @override
-  UserModel passwword(String? passwword) => this(passwword: passwword);
+  UserModel password(String? password) => this(password: password);
 
   @override
 
@@ -58,8 +58,8 @@ class _$UserModelCWProxyImpl implements _$UserModelCWProxy {
   UserModel call({
     Object? id = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
-    Object? mail = const $CopyWithPlaceholder(),
-    Object? passwword = const $CopyWithPlaceholder(),
+    Object? email = const $CopyWithPlaceholder(),
+    Object? password = const $CopyWithPlaceholder(),
   }) {
     return UserModel(
       id: id == const $CopyWithPlaceholder()
@@ -70,14 +70,14 @@ class _$UserModelCWProxyImpl implements _$UserModelCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String?,
-      mail: mail == const $CopyWithPlaceholder()
-          ? _value.mail
+      email: email == const $CopyWithPlaceholder()
+          ? _value.email
           // ignore: cast_nullable_to_non_nullable
-          : mail as String?,
-      passwword: passwword == const $CopyWithPlaceholder()
-          ? _value.passwword
+          : email as String?,
+      password: password == const $CopyWithPlaceholder()
+          ? _value.password
           // ignore: cast_nullable_to_non_nullable
-          : passwword as String?,
+          : password as String?,
     );
   }
 }
@@ -95,13 +95,13 @@ extension $UserModelCopyWith on UserModel {
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       id: json['id'] as String?,
       name: json['name'] as String?,
-      mail: json['mail'] as String?,
-      passwword: json['passwword'] as String?,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'mail': instance.mail,
-      'passwword': instance.passwword,
+      'email': instance.email,
+      'password': instance.password,
     };

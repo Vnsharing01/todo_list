@@ -6,7 +6,7 @@ class ApiClient {
 
   ApiClient() {
     dio = Dio(BaseOptions(
-      baseUrl: 'https://dummyjson.com',
+      baseUrl: 'https://672dded4fd89797156440cf0.mockapi.io/todo-task/v1/',
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 3),
       receiveTimeout: const Duration(seconds: 3),

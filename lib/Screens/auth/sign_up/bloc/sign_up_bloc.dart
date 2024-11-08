@@ -27,6 +27,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       // TODO: implement event handler
     });
 
+    on<ChangedNameEvent>((event, emit) {
+      emit(state.coppyWith(name: event.text));
+    });
     on<ChangedEmailEvent>((event, emit) {
       emit(state.coppyWith(email: event.text, emailError: ''));
     });

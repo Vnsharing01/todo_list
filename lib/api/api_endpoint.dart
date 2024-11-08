@@ -1,12 +1,14 @@
 class ApiEndpoint {
+  //user
+  static const String LOGIN = 'user';
+  static const String REGISTER = 'user';
 
-  //login
-  static const String LOGIN = 'auth/login';
 
-  //register
-  static const String ADD_USER = 'users/add';
-  static const String SENT_OTP = '/api/auth/otp/request';
-  static const String VERIFY_OTP = '/api/auth/otp/verify';
-  static const String REGISTER = '/api/account/register';
-  static const String DELETE_ACCOUNT = '/api/account/end-user/delete';
+  //task
+  static const String TASK = 'task';
+  static const String TASK_NEW = 'task';
+  static const String TASK_DETAIL = 'task/:id';
+  static const String TASK_UPDATE = 'task/:id';
+  static const String TASK_DELETE = 'task/:id';
+
 }
