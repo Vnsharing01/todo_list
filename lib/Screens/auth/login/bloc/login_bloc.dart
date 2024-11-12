@@ -54,13 +54,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       try {
         final res = await loginRepository.login(state.email, state.password);
         logger.f("res: $res");
-        UserCredential userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-                email: state.email, password: state.password);
-        if (userCredential.user != null) {
-          await userCredential.user!.getIdToken();
-          if (!event.context.mounted) return;
-          await Navigator.pushReplacementNamed(event.context, Routes.HOME);
+
+        if (res != null) {
+          UserCredential userCredential = await FirebaseAuth.instance
+              .signInWithEmailAndPassword(
+                  email: state.email, password: state.password);
+          if (userCredential.user != null) {
+            await userCredential.user!.getIdToken();
+            if (!event.context.mounted) return;
+            await Navigator.pushReplacementNamed(event.context, Routes.HOME);
+          }
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {

@@ -60,12 +60,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         final res = await signUpRepository.register(
             state.email, state.name, state.password);
         logger.f("res: $res");
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: event.email, password: event.password);
-        if (userCredential.user != null) {
-          if (!event.context.mounted) return;
-          await Navigator.pushReplacementNamed(event.context, Routes.LOGIN);
+        if (res != null) {
+          UserCredential userCredential = await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(
+                  email: event.email, password: event.password);
+          if (userCredential.user != null) {
+            if (!event.context.mounted) return;
+            await Navigator.pushReplacementNamed(event.context, Routes.LOGIN);
+          }
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
@@ -73,12 +75,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         } else if (e.code == 'email-already-in-use') {
           logger.w('The account already exists for that email.');
         }
-      }on DioException  catch (ex) {
-      if(ex.type == DioExceptionType.connectionTimeout){
-        throw Exception("Connection  Timeout Exception");
-      }
-      throw Exception(ex.message);
-    } catch (e) {
+      } on DioException catch (ex) {
+        if (ex.type == DioExceptionType.connectionTimeout) {
+          throw Exception("Connection  Timeout Exception");
+        }
+        throw Exception(ex.message);
+      } catch (e) {
         logger.e(e);
       }
     });

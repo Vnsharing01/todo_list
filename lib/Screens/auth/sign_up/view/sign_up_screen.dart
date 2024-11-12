@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
 import '../../../../custom_view/button_text_view.dart';
 import '../../../../custom_view/custome_text_field_view.dart';
@@ -12,7 +11,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logger = Logger();
     return BlocConsumer<SignUpBloc, SignUpState>(
       listener: (context, state) {},
       builder: (context, state) {
