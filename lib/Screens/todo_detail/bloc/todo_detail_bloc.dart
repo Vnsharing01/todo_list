@@ -16,7 +16,7 @@ class TodoDetailBloc extends Bloc<TodoDetailEvent, TodoDetailState> {
       emit(TodoDetailState(notesModel: event.model));
     });
     on<CheckDoneTask>((event, emit) {
-      final model = state.notesModel?.copyWith(isDon: !event.isDone);
+      final model = state.notesModel?.copyWith(isDone: !event.isDone);
       emit(TodoDetailState(notesModel: model));
     });
     on<RemoveTask>((event, emit) {

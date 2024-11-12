@@ -17,7 +17,7 @@ abstract class _$NotesModelCWProxy {
 
   NotesModel title(String? title);
 
-  NotesModel isDon(bool? isDon);
+  NotesModel isDone(bool? isDone);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NotesModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -31,7 +31,7 @@ abstract class _$NotesModelCWProxy {
     String? time,
     int? image,
     String? title,
-    bool? isDon,
+    bool? isDone,
   });
 }
 
@@ -57,7 +57,7 @@ class _$NotesModelCWProxyImpl implements _$NotesModelCWProxy {
   NotesModel title(String? title) => this(title: title);
 
   @override
-  NotesModel isDon(bool? isDon) => this(isDon: isDon);
+  NotesModel isDone(bool? isDone) => this(isDone: isDone);
 
   @override
 
@@ -73,7 +73,7 @@ class _$NotesModelCWProxyImpl implements _$NotesModelCWProxy {
     Object? time = const $CopyWithPlaceholder(),
     Object? image = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
-    Object? isDon = const $CopyWithPlaceholder(),
+    Object? isDone = const $CopyWithPlaceholder(),
   }) {
     return NotesModel(
       id: id == const $CopyWithPlaceholder()
@@ -96,10 +96,10 @@ class _$NotesModelCWProxyImpl implements _$NotesModelCWProxy {
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String?,
-      isDon: isDon == const $CopyWithPlaceholder()
-          ? _value.isDon
+      isDone: isDone == const $CopyWithPlaceholder()
+          ? _value.isDone
           // ignore: cast_nullable_to_non_nullable
-          : isDon as bool?,
+          : isDone as bool?,
     );
   }
 }
@@ -120,7 +120,7 @@ NotesModel _$NotesModelFromJson(Map<String, dynamic> json) => NotesModel(
       time: json['time'] as String?,
       image: (json['image'] as num?)?.toInt(),
       title: json['title'] as String?,
-      isDon: json['isDon'] as bool? ?? false,
+      isDone: json['isDone'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$NotesModelToJson(NotesModel instance) =>
@@ -130,5 +130,5 @@ Map<String, dynamic> _$NotesModelToJson(NotesModel instance) =>
       'title': instance.title,
       'time': instance.time,
       'image': instance.image,
-      'isDon': instance.isDon,
+      'isDone': instance.isDone,
     };

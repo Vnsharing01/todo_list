@@ -64,7 +64,7 @@ class TodoDetailScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              state.notesModel?.isDon == false
+                              state.notesModel?.isDone == false
                                   ? 'Open'
                                   : 'Done',
                               maxLines: 1,
@@ -74,10 +74,10 @@ class TodoDetailScreen extends StatelessWidget {
                               ),
                             ),
                             Checkbox(
-                              value: state.notesModel?.isDon ?? false,
+                              value: state.notesModel?.isDone ?? false,
                               onChanged: (value) {
                                 bloc.add(CheckDoneTask(
-                                    state.notesModel?.isDon ?? false));
+                                    state.notesModel?.isDone ?? false));
                               },
                             )
                           ],

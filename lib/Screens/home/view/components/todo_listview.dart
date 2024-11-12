@@ -38,7 +38,7 @@ class TodoListView extends StatelessWidget {
                 titleTask: item.title ?? '',
                 content: item.subtitle ?? '',
                 imgTaskUrl: '',
-                isDone: item.isDon!,
+                isDone: item.isDone!,
                 onChanged: (value) {
                   bloc.add(CheckDoneTask(item));
                 },

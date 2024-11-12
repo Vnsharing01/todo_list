@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:logger/logger.dart';
 
 class ApiClient {
   late final Dio dio;
@@ -16,20 +17,20 @@ class ApiClient {
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         // Xử lý trước khi gửi request
-        print('Request [${options.method}] => PATH: ${options.path}');
+        Logger().t('Request [${options.method}] => PATH: ${options.path}');
         EasyLoading.show();
         return handler.next(options);
       },
       onResponse: (response, handler) {
         // Xử lý khi nhận được response
         EasyLoading.dismiss();
-        print('Response [${response.statusCode}] => DATA: ${response.data}');
+        Logger().f('Response [${response.statusCode}] => DATA: ${response.data}');
         return handler.next(response);
       },
       onError: (error, handler) {
         // Xử lý khi có lỗi
         EasyLoading.dismiss();
-        print('Error: ${error.message}');
+        Logger().e('Error: ${error.message}');
         return handler.next(error);
       },
     ));

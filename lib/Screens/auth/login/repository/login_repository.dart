@@ -4,12 +4,12 @@ import 'package:todo_list/api/api_endpoint.dart';
 
 
 class LoginRepository{
-  final ApiClient _apiClient;
+  final ApiClient apiClient;
 
-  LoginRepository(this._apiClient);
+  LoginRepository(this.apiClient);
 
   Future<dynamic> login(String mail, String password) async {
-    final res = await _apiClient.get(
+    final res = await apiClient.get(
       ApiEndpoint.LOGIN,
       queryParameters: {"email": mail},
     );

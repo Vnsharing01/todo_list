@@ -11,14 +11,14 @@ class NotesModel {
   final String? title;
   final String? time;
   final int? image;
-  final bool? isDon;
+  final bool? isDone;
   NotesModel({
     this.id,
     this.subtitle,
     this.time,
     this.image,
     this.title,
-    this.isDon = false,
+    this.isDone = false,
   });
 
   factory NotesModel.fromJson(Map<String, dynamic> json) =>
