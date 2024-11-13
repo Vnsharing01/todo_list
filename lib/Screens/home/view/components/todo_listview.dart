@@ -54,6 +54,7 @@ class TodoListView extends StatelessWidget {
                       background: Colors.red,
                       onOK: () {
                         bloc.add(RemoveTask(item));
+                        Navigator.pop(context);
                       },
                     ),
                   );

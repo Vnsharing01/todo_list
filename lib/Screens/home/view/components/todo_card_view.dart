@@ -66,9 +66,9 @@ class _TodoCardViewState extends State<TodoCardView> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Text(
-                    ' ${widget.startDay} - ${widget.endDay}',
-                  )
+                  // Text(
+                  //   ' ${widget.startDay} - ${widget.endDay}',
+                  // )
                 ],
               )),
               widget.imgTaskUrl.isNotEmpty

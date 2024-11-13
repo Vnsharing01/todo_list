@@ -94,14 +94,14 @@ class TodoDetailScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      '10/10/2024 - 16/10/2024',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FontStyle.italic),
-                    ),
+                    // const SizedBox(height: 8),
+                    // const Text(
+                    //   '10/10/2024 - 16/10/2024',
+                    //   style: TextStyle(
+                    //       fontSize: 16,
+                    //       fontWeight: FontWeight.normal,
+                    //       fontStyle: FontStyle.italic),
+                    // ),
                     const SizedBox(height: 16),
                     ButtonTextView(
                       btnName: 'Remove Task',

@@ -22,4 +22,23 @@ class HomeRepository {
     }
     return data;
   }
+
+  Future<NotesModel> updateTask(NotesModel model) async {
+    final res = await apiClient.put(ApiEndpoint.TASK_UPDATE(model.id!),
+        data: model.copyWith(isDone: !model.isDone!));
+
+    if (res.statusCode != 200) {
+      Logger().e(res.statusMessage);
+    }
+    return NotesModel.fromJson(res.data);
+  }
+
+  Future<NotesModel> removeTask(NotesModel model) async {
+    final res = await apiClient.delete(ApiEndpoint.TASK_DELETE(model.id!));
+
+    if (res.statusCode != 200) {
+      Logger().e(res.statusMessage);
+    }
+    return NotesModel.fromJson(res.data);
+  }
 }

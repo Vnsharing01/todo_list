@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,14 +33,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return BlocProvider(
       create: (context) => HomeBloc()..add(LoadTask()),
       child: BlocConsumer<HomeBloc, HomeState>(
-        listener: (context, state) {
-        
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           var bloc = context.read<HomeBloc>();
-          log("listTask: ${state.listTask?.length}");
-          log("listOpen: ${state.listTaskOpen?.length}");
-          log("listDone: ${state.listTaskDone?.length}");
           return Scaffold(
             appBar: const DefaulAppBar(
               title: 'Todo',
@@ -94,4 +87,3 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 }
-
