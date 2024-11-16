@@ -82,7 +82,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             listDone.add(model);
           }
         }
-        const SnackBar(content: Text('Bạn đã xoá task'));
       }
       emit(HomeState(
         listTask: listTask,

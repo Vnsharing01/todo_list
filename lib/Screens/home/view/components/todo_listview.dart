@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:todo_list/styles/this_colos.dart';
 
 import '../../../../custom_view/dialog/notifi_dialog.dart';
 import '../../../../models/notes_model.dart';
@@ -32,7 +32,6 @@ class TodoListView extends StatelessWidget {
       itemCount: listTask.length,
       itemBuilder: (context, index) {
         var item = listTask[index];
-        log("list: ${listTask.length}");
         return listTask.isNotEmpty
             ? TodoCardView(
                 titleTask: item.title ?? '',
@@ -55,6 +54,17 @@ class TodoListView extends StatelessWidget {
                       onOK: () {
                         bloc.add(RemoveTask(item));
                         Navigator.pop(context);
+                        bloc.add(LoadTask());
+                        Future.delayed(const Duration(milliseconds: 100), () {
+                          Fluttertoast.showToast(
+                            msg: 'Đã xoá Task',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.TOP,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                            backgroundColor: ThisColors.mainColor,
+                          );
+                        });
                       },
                     ),
                   );
