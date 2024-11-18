@@ -23,6 +23,12 @@ class TodoDetailScreen extends StatelessWidget {
           return Scaffold(
             appBar: DefaulAppBar(
               title: 'Todo',
+              leading: BackButton(
+                onPressed: () => Navigator.popAndPushNamed(
+                  context,
+                  Routes.HOME,
+                ),
+              ),
               actions: [
                 IconButton(
                   onPressed: () {
@@ -108,6 +114,14 @@ class TodoDetailScreen extends StatelessWidget {
                       background: Colors.red,
                       onTap: () {
                         bloc.add(RemoveTask(state.notesModel!));
+                        Future.delayed(
+                          const Duration(milliseconds: 100),
+                          () => Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            Routes.HOME,
+                            (route) => false,
+                          ),
+                        );
                       },
                     ),
                   ],

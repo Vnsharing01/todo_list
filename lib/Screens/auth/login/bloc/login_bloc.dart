@@ -62,7 +62,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           if (userCredential.user != null) {
             await userCredential.user!.getIdToken();
             if (!event.context.mounted) return;
-            await Navigator.pushReplacementNamed(event.context, Routes.HOME);
+            await Navigator.pushNamedAndRemoveUntil(
+              event.context,
+              Routes.HOME,
+              (route) => false,
+            );
           }
         }
       } on FirebaseAuthException catch (e) {

@@ -6,7 +6,7 @@ class DefaulAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.centerTitle,
     this.actions,
-    this.isShowLeading,
+    this.isShowLeading, this.leading,
   });
 
   final String title;
@@ -14,6 +14,7 @@ class DefaulAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool? centerTitle;
   final bool? isShowLeading;
 
+  final Widget? leading;
   final List<Widget>? actions;
 
   @override
@@ -26,6 +27,7 @@ class DefaulAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: centerTitle ?? true,
       actions: actions,
       automaticallyImplyLeading: isShowLeading ?? true,
+      leading: leading,
     );
   }
 

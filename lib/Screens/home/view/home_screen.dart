@@ -39,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           return Scaffold(
             appBar: const DefaulAppBar(
               title: 'Todo',
-              isShowLeading: false,
             ),
             body: SizedBox(
                 width: double.infinity,
