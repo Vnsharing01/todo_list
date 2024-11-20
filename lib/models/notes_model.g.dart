@@ -9,6 +9,8 @@ part of 'notes_model.dart';
 abstract class _$NotesModelCWProxy {
   NotesModel id(String? id);
 
+  NotesModel userId(String? userId);
+
   NotesModel subtitle(String? subtitle);
 
   NotesModel time(String? time);
@@ -27,6 +29,7 @@ abstract class _$NotesModelCWProxy {
   /// ````
   NotesModel call({
     String? id,
+    String? userId,
     String? subtitle,
     String? time,
     int? image,
@@ -43,6 +46,9 @@ class _$NotesModelCWProxyImpl implements _$NotesModelCWProxy {
 
   @override
   NotesModel id(String? id) => this(id: id);
+
+  @override
+  NotesModel userId(String? userId) => this(userId: userId);
 
   @override
   NotesModel subtitle(String? subtitle) => this(subtitle: subtitle);
@@ -69,6 +75,7 @@ class _$NotesModelCWProxyImpl implements _$NotesModelCWProxy {
   /// ````
   NotesModel call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? userId = const $CopyWithPlaceholder(),
     Object? subtitle = const $CopyWithPlaceholder(),
     Object? time = const $CopyWithPlaceholder(),
     Object? image = const $CopyWithPlaceholder(),
@@ -80,6 +87,10 @@ class _$NotesModelCWProxyImpl implements _$NotesModelCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String?,
+      userId: userId == const $CopyWithPlaceholder()
+          ? _value.userId
+          // ignore: cast_nullable_to_non_nullable
+          : userId as String?,
       subtitle: subtitle == const $CopyWithPlaceholder()
           ? _value.subtitle
           // ignore: cast_nullable_to_non_nullable
@@ -116,6 +127,7 @@ extension $NotesModelCopyWith on NotesModel {
 
 NotesModel _$NotesModelFromJson(Map<String, dynamic> json) => NotesModel(
       id: json['id'] as String?,
+      userId: json['userId'] as String?,
       subtitle: json['subtitle'] as String?,
       time: json['time'] as String?,
       image: (json['image'] as num?)?.toInt(),
@@ -126,6 +138,7 @@ NotesModel _$NotesModelFromJson(Map<String, dynamic> json) => NotesModel(
 Map<String, dynamic> _$NotesModelToJson(NotesModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'userId': instance.userId,
       'subtitle': instance.subtitle,
       'title': instance.title,
       'time': instance.time,

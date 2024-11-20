@@ -20,3 +20,17 @@ class ChangedDescriptionEvent extends EditTodoEvent {
 
   ChangedDescriptionEvent({required this.text});
 }
+
+class UpdateTask extends EditTodoEvent {
+  final BuildContext context;
+  final NotesModel? model;
+
+  UpdateTask(this.context, {this.model});
+}
+
+class AddNewTask extends EditTodoEvent {
+  final NotesModel? model;
+  final BuildContext context;
+
+  AddNewTask(this.context, {this.model});
+}

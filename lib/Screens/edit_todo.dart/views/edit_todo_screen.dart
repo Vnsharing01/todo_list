@@ -86,6 +86,23 @@ class EditTodoScreen extends StatelessWidget {
                         child: ButtonTextView(
                           btnName: arguments != null ? 'Update' : 'Add',
                           background: ThisColors.mainColor,
+                          onTap: arguments != null
+                              ? () {
+                                  bloc.add(UpdateTask(context,
+                                      model: NotesModel(
+                                        id: arguments.id,
+                                        title: state.title,
+                                        subtitle: state.description,
+                                        isDone: arguments.isDone,
+                                      )));
+                                }
+                              : () {
+                                  bloc.add(AddNewTask(context,
+                                      model: NotesModel(
+                                        title: state.title,
+                                        subtitle: state.description,
+                                      )));
+                                },
                         ),
                       ),
                     ],

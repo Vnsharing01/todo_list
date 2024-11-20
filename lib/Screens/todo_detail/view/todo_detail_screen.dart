@@ -24,9 +24,10 @@ class TodoDetailScreen extends StatelessWidget {
             appBar: DefaulAppBar(
               title: 'Todo',
               leading: BackButton(
-                onPressed: () => Navigator.popAndPushNamed(
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
                   context,
                   Routes.HOME,
+                  (route) => false,
                 ),
               ),
               actions: [

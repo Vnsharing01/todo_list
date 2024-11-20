@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/Screens/auth/login/repository/login_repository.dart';
 import 'package:todo_list/api/api_client.dart';
 
@@ -16,6 +17,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final logger = Logger();
   final dio = Dio();
   final loginRepository = LoginRepository(ApiClient());
+
   LoginBloc()
       : super(const LoginState(
           email: '',
@@ -51,6 +53,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
 
     on<SignInEvent>((event, emit) async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
       try {
         final res = await loginRepository.login(state.email, state.password);
         logger.f("res: $res");
@@ -62,6 +65,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           if (userCredential.user != null) {
             await userCredential.user!.getIdToken();
             if (!event.context.mounted) return;
+            prefs.setString('UserId', res.id);
             await Navigator.pushNamedAndRemoveUntil(
               event.context,
               Routes.HOME,

@@ -83,11 +83,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
         }
       }
-      emit(HomeState(
-        listTask: listTask,
-        listTaskOpen: listOpen,
-        listTaskDone: listDone,
-      ));
     });
   }
 

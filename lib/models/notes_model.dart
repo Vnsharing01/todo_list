@@ -7,6 +7,7 @@ part 'notes_model.g.dart';
 @CopyWith()
 class NotesModel {
   final String? id;
+  final String? userId;
   final String? subtitle;
   final String? title;
   final String? time;
@@ -14,6 +15,7 @@ class NotesModel {
   final bool? isDone;
   NotesModel({
     this.id,
+    this.userId,
     this.subtitle,
     this.time,
     this.image,

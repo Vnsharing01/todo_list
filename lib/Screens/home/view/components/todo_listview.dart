@@ -54,8 +54,8 @@ class TodoListView extends StatelessWidget {
                       onOK: () {
                         bloc.add(RemoveTask(item));
                         Navigator.pop(context);
-                        bloc.add(LoadTask());
                         Future.delayed(const Duration(milliseconds: 100), () {
+                          bloc.add(LoadTask());
                           Fluttertoast.showToast(
                             msg: 'Đã xoá Task',
                             toastLength: Toast.LENGTH_SHORT,
