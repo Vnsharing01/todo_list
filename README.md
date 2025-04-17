@@ -1,6 +1,6 @@
 # todo_list
 
-A new Flutter project.
+project ôn tập bloc
 
 ## Getting Started
 
